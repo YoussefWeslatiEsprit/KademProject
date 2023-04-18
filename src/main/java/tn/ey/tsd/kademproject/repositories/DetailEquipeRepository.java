@@ -1,6 +1,10 @@
 package tn.ey.tsd.kademproject.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface DetailEquipeRepository extends JpaRepository {
+import tn.ey.tsd.kademproject.entities.Departement;
+
+@Repository
+public interface DetailEquipeRepository extends JpaRepository<Departement,Integer> {
 }
