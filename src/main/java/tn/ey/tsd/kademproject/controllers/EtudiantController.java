@@ -1,8 +1,6 @@
 package tn.ey.tsd.kademproject.controllers;
 
-import java.util.List;
-import java.util.Optional;
-
+import java.util.List;import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,29 +18,30 @@ import tn.ey.tsd.kademproject.services.IEtudiantServices;
 @AllArgsConstructor
 @RequestMapping("/etudiant")
 public class EtudiantController {
-    private final IEtudiantServices etudiantServices;
+    @Autowired
+    private IEtudiantServices etudiantServices;
 
-    @GetMapping("/getall")
+    @GetMapping("/retrieveAllEtudiants")
     private List<Etudiant> retrieveAllEtudiants(){
         return etudiantServices.retrieveAllEtudiants();
     };
 
-    @PostMapping("/add")
+    @PostMapping("/addEtudiant")
     private Etudiant addEtudiant (@RequestBody Etudiant e){
         return etudiantServices.addEtudiant(e);
     };
     
-    @PutMapping("/update")
+    @PutMapping("/updateEtudiant")
     private Etudiant updateEtudiant (@RequestBody Etudiant e){
         return etudiantServices.updateEtudiant(e);
     };
 
-    @GetMapping("/{idEtudiant}")
-    private Optional<Etudiant> retrieveEtudiant(@PathVariable Integer idEtudiant){
+    @GetMapping("/retrieveEtudiant/{idEtudiant}")
+    private Etudiant retrieveEtudiant(@PathVariable Integer idEtudiant){
         return etudiantServices.retrieveEtudiant(idEtudiant);
     };
 
-    @DeleteMapping("/{idEtudiant}")
+    @DeleteMapping("/removeEtudiant/{idEtudiant}")
     private void removeEtudiant(@PathVariable Integer idEtudiant){
         etudiantServices.removeEtudiant(idEtudiant);
     };

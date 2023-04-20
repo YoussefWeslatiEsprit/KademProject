@@ -1,8 +1,7 @@
 package tn.ey.tsd.kademproject.controllers;
 
 import java.util.List;
-import java.util.Optional;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,25 +18,26 @@ import tn.ey.tsd.kademproject.services.IUniversiteServices;
 @RestController @AllArgsConstructor
 @RequestMapping("/universite")
 public class UniversiteController {
-    private final IUniversiteServices universiteServices;
+    @Autowired
+    private IUniversiteServices universiteServices;
 
-    @GetMapping("/getall")
+    @GetMapping("/retrieveAllUniversites")
     private List<Universite> retrieveAllUniversites(){
         return universiteServices.retrieveAllUniversites();
     };
 
-    @PostMapping("/add")
+    @PostMapping("/addUniversite")
     private Universite addUniversite (@RequestBody Universite u){
         return universiteServices.addUniversite(u);
     };
 
-    @PutMapping("/update")
+    @PutMapping("/updateUniversite")
     private Universite updateUniversite (@RequestBody Universite u){
         return universiteServices.updateUniversite(u);
     };
 
-    @GetMapping("/{idUniversite}")
-    private Optional<Universite> retrieveUniversite (@PathVariable Integer idUniversite){
+    @GetMapping("/retrieveUniversite/{idUniversite}")
+    private Universite retrieveUniversite (@PathVariable Integer idUniversite){
         return universiteServices.retrieveUniversite(idUniversite);
     };
 

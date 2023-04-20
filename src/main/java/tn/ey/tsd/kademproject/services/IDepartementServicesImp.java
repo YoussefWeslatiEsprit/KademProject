@@ -1,7 +1,6 @@
 package tn.ey.tsd.kademproject.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -24,8 +23,8 @@ public class IDepartementServicesImp implements IDepartementServices {
     }
 
     @Override
-    public Optional<Departement> retrieveDepartement(Integer idDepart) {        
-       return departementRepository.findById(idDepart);
+    public Departement retrieveDepartement(Integer idDepart) {        
+       return departementRepository.findById(idDepart).orElse(null);
     }
 
     @Override

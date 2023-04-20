@@ -1,7 +1,6 @@
 package tn.ey.tsd.kademproject.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -24,8 +23,8 @@ public class IEquipeServicesImp implements IEquipeServices {
     }
 
     @Override
-    public Optional<Equipe> retrieveEquipe(Integer idEquipe) {
-        return equipeRepository.findById(idEquipe);
+    public Equipe retrieveEquipe(Integer idEquipe) {
+        return equipeRepository.findById(idEquipe).orElse(null);
     }
 
     @Override

@@ -1,8 +1,6 @@
 package tn.ey.tsd.kademproject.services;
 
 import java.util.List;
-import java.util.Optional;
-
 import tn.ey.tsd.kademproject.entities.Equipe;
 
 public interface IEquipeServices {
@@ -12,5 +10,5 @@ public interface IEquipeServices {
 
     Equipe updateEquipe (Equipe e);
 
-    Optional<Equipe> retrieveEquipe (Integer idEquipe);
+    Equipe retrieveEquipe (Integer idEquipe);
 }

@@ -1,8 +1,8 @@
 package tn.ey.tsd.kademproject.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,25 +19,26 @@ import tn.ey.tsd.kademproject.services.IDepartementServices;
 @RequestMapping("/departement")
 @RequiredArgsConstructor
 public class DepartementController {
+    @Autowired
     private IDepartementServices departementServices;
 
-    @GetMapping("/getall")
+    @GetMapping("/retrieveAllDepartements")
     private List<Departement> retrieveAllDepartements(){
         return departementServices.retrieveAllDepartements();
     };
 
-    @PostMapping("/add")
-    private Departement addDepartement (@RequestBody Departement d){
+    @PostMapping("/addDepartement")
+    private Departement addDepartement(@RequestBody Departement d){
         return departementServices.addDepartement(d);
     };
 
-    @PutMapping("/update")
-    private Departement updateDepartement (@RequestBody Departement d){
+    @PutMapping("/updateDepartement")
+    private Departement updateDepartement(@RequestBody Departement d){
         return departementServices.updateDepartement(d);
     };
 
-    @GetMapping("/{idDepart}")
-    private Optional<Departement> retrieveDepartement (@PathVariable Integer idDepart){
+    @GetMapping("/retrieveDepartement/{idDepart}")
+    private Departement retrieveDepartement (@PathVariable Integer idDepart){
         return departementServices.retrieveDepartement(idDepart);
     };
 }

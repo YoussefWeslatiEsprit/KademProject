@@ -16,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Equipe {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int idEquipe;
     private String nomEquipe;
 

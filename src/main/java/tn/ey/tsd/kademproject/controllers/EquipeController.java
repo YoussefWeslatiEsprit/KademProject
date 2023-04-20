@@ -1,8 +1,7 @@
 package tn.ey.tsd.kademproject.controllers;
 
 import java.util.List;
-import java.util.Optional;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,25 +18,26 @@ import tn.ey.tsd.kademproject.services.IEquipeServices;
 @RequestMapping("/equipe")
 @AllArgsConstructor
 public class EquipeController {
+    @Autowired
     private IEquipeServices equipeServices;
     
-    @GetMapping("/getall")
+    @GetMapping("/retrieveAllEquipes")
     private List<Equipe> retrieveAllEquipes(){
         return equipeServices.retrieveAllEquipes();
     };
     
-    @PostMapping("/add")
+    @PostMapping("/addEquipe")
     private Equipe addEquipe (@RequestBody Equipe e){
         return equipeServices.addEquipe(e);
     };
 
-    @PutMapping
+    @PutMapping("/updateEquipe")
     private Equipe updateEquipe (@RequestBody Equipe e){
         return equipeServices.updateEquipe(e);
     };
 
-    @GetMapping("/{idequipe}")
-    private Optional<Equipe> retrieveEquipe (@PathVariable Integer idEquipe){
+    @GetMapping("/retrieveEquipe/{idequipe}")
+    private Equipe retrieveEquipe (@PathVariable Integer idEquipe){
         return equipeServices.retrieveEquipe(idEquipe);
     };
 }

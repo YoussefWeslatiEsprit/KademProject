@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Etudiant {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int idEtudiant;
     private String prenomE;
     private String nomE;

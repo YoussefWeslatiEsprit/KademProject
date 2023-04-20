@@ -1,7 +1,6 @@
 package tn.ey.tsd.kademproject.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -30,8 +29,8 @@ public class IContratServicesImp implements IContratServices{
     }
 
     @Override
-    public Optional<Contrat> retrieveContrat(Integer idContrat) {
-       return contratRepository.findById(idContrat);
+    public Contrat retrieveContrat(Integer idContrat) {
+       return contratRepository.findById(idContrat).orElse(null);
     }
 
     @Override

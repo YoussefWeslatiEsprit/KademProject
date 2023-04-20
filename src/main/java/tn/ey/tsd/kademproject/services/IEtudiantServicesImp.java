@@ -1,8 +1,6 @@
 package tn.ey.tsd.kademproject.services;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
@@ -30,8 +28,8 @@ public class IEtudiantServicesImp implements IEtudiantServices{
     }
 
     @Override
-    public Optional<Etudiant> retrieveEtudiant(Integer idEtudiant) {
-        return etudiantRepository.findById(idEtudiant);
+    public Etudiant retrieveEtudiant(Integer idEtudiant) {
+        return etudiantRepository.findById(idEtudiant).orElse(null);
     }
 
     @Override

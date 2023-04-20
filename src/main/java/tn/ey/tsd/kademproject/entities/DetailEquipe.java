@@ -6,10 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-import javax.persistence.OneToOne;
 
 @Entity
 @Getter
@@ -18,6 +16,7 @@ import javax.persistence.OneToOne;
 @AllArgsConstructor
 public class DetailEquipe {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     int idDetailEquipe;
     int salle;
     String thematique;

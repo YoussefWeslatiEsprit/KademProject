@@ -1,7 +1,6 @@
 package tn.ey.tsd.kademproject.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -24,8 +23,8 @@ public class IUniversiteServicesImp implements IUniversiteServices{
     }
 
     @Override
-    public Optional<Universite> retrieveUniversite(Integer idUniversite) {
-        return universiteRepository.findById(idUniversite);
+    public Universite retrieveUniversite(Integer idUniversite) {
+        return universiteRepository.findById(idUniversite).orElse(null);
     }
 
     @Override

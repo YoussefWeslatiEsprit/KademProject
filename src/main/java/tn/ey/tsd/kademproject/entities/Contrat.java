@@ -16,14 +16,15 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Contrat {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int idContrat;
     private LocalDate dateebutContrat;
     private LocalDate dateFinContrat;
-     @Enumerated(EnumType.STRING)
-    private Specialite specialite;
     private Boolean achive;
     private int montantContrat;
 
+    @Enumerated(EnumType.STRING)
+    private Specialite specialite;
 
     @ManyToOne
     @JsonIgnore

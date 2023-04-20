@@ -1,8 +1,7 @@
 package tn.ey.tsd.kademproject.controllers;
 
 import java.util.List;
-import java.util.Optional;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,26 +19,27 @@ import tn.ey.tsd.kademproject.services.IContratServices;
 @RequestMapping("/contrat")
 @RequiredArgsConstructor
 public class ContratController {
-    private final IContratServices contratServices;
+    @Autowired
+    private IContratServices contratServices;
 
-    @GetMapping("/getall")
+    @GetMapping("/retrieveAllContrats")
     List<Contrat> retrieveAllContrats(){
         return contratServices.retrieveAllContrats();
     };
 
-    @PostMapping("/add")
+    @PostMapping("/addContrat")
     private Contrat addContrat(@RequestBody Contrat ce){
         return contratServices.addContrat(ce);
     }
-    @PutMapping("/update")
-    private Contrat upContrat(@RequestBody Contrat ce){
+    @PutMapping("/updateContrat")
+    private Contrat updateContrat(@RequestBody Contrat ce){
         return contratServices.updateContrat(ce);
     }
-    @GetMapping("/{idcontart}")
-    private Optional<Contrat> retrieveContrat(@PathVariable Integer idContrat){
+    @GetMapping("/retrieveContrat/{idcontart}")
+    private Contrat retrieveContrat(@PathVariable Integer idContrat){
         return contratServices.retrieveContrat(idContrat);
     }
-    @DeleteMapping("/{idcontart}")
+    @DeleteMapping("/removeContrat/{idcontart}")
     private void removeContrat(@PathVariable Integer idInteger){
         contratServices.removeContrat(idInteger);
     }
